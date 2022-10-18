@@ -15,6 +15,8 @@
 """
 
 
+""" Решение №1"""
+
 def max_profit(comp):
 
     best_corp = []
@@ -38,7 +40,7 @@ def max_profit(comp):
 
     """Этим выражение мы запускаем 3 раза выражение сложностью O(n^2)"""
     while len(best_corp) < 3:
-        max_val(company_profit)
+        max_val(comp)
 
     return best_corp
 
@@ -77,5 +79,34 @@ company_profit = [{
             }
             ]
 
-print('Три компании с самой большой прибылью:', max_profit(company_profit))
+# print('Три компании с самой большой прибылью:', max_profit(company_profit))
 
+
+""" 
+Решение №2
+Сложность представленной функции О(n^2) - написана проще, меньше вложенных проходов, но результат будет похожим. Голову сломал, но не знаю, как без вложенного remove обойтись
+"""
+
+
+def max_profit_2(lst):
+
+    best_corp = []
+
+    def max_val(company):
+        max_profit = 0
+        for i in company:  # O(n)
+            if i["annual_profit"] > max_profit: # O(1)
+                max_profit = i["annual_profit"] # O(1)
+
+        for i in company: # O(n)
+            if i["annual_profit"] == max_profit: # O(1)
+                best_corp.append(i["company"]) # O(1)
+                company.remove(i) # O(n)
+        return max_profit
+
+    while len(best_corp) < 3:
+        max_val(lst)
+
+    return best_corp
+
+print('Три компании с самой большой прибылью:', max_profit_2(company_profit))
