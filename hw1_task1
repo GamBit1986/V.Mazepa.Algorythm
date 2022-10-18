@@ -63,5 +63,6 @@ print(check_1(lst))
 print(check_2(lst))
 print(check_3(lst))
 
+
 # T(n) = 4 * O(n) + 7 * O(1) + O(n * Log(n))
 # O(n) = n * Log(n)
